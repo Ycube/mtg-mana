@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html ng-app='shortly'>
+<html ng-app='mtgMana'>
   <head>
     <meta charset="utf-8" />
     <title>MTG Mana</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
   </head>
-  <body>
+  <body ng-controller='manaController'>
     <h1>MTG Mana</h1>
 
     <div ui-view></div>
 
+    <li ng-repeat='mana in manaType track by $index'>{{ mana.color }}
+      <form>
+        <input type="number" placeholder="0" min="0" ng-change='update($index)'><br>
+      </form>
+    </li>
+
+    <button ng-click='calculate()'>Calculate</button>
+    
+    
     <script src="app.js"></script>
   </body>
 </html>
